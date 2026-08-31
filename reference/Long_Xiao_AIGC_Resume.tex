@@ -1,0 +1,149 @@
+% !TEX program = tectonic
+% Long Xiao - AIGC / Video Generation / World Model Resume
+\documentclass[10pt,a4paper]{ctexart}
+
+\usepackage[left=1.28cm,right=1.28cm,top=1.02cm,bottom=0.92cm]{geometry}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{fontspec}
+\usepackage{microtype}
+\usepackage{ragged2e}
+
+\providecommand{\AccentHex}{9A6A3A}
+\providecommand{\LinkHex}{2F6B7C}
+\definecolor{navy}{HTML}{22344A}
+\definecolor{teal}{HTML}{\AccentHex}
+\definecolor{linkblue}{HTML}{\LinkHex}
+\definecolor{ink}{HTML}{293746}
+\definecolor{muted}{HTML}{6B7784}
+\definecolor{rulegray}{HTML}{D4DCE2}
+
+\IfFontExistsTF{Times New Roman}{\setmainfont{Times New Roman}}{}
+\IfFontExistsTF{Arial}{\setsansfont{Arial}}{}
+\IfFontExistsTF{Songti SC}{\setCJKmainfont{Songti SC}}{\setCJKmainfont{FandolSong-Regular}}
+\IfFontExistsTF{PingFang SC}{%
+  \setCJKsansfont{PingFang SC}%
+}{%
+  \setCJKsansfont{FandolHei-Regular}%
+}
+
+\hypersetup{colorlinks=true,urlcolor=linkblue,linkcolor=linkblue}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\tabcolsep}{0pt}
+\setlength{\parskip}{0pt}
+\linespread{1.00}
+
+
+\newcommand{\sectiontitle}[2]{%
+  \vspace{0.46em}
+  {\color{teal}\rule{2.2pt}{1.10em}}\hspace{0.48em}%
+  {\sffamily\color{navy}\fontsize{12.7}{14}\selectfont\bfseries #1}%
+  \hspace{0.62em}{\sffamily\color{muted}\fontsize{7.1}{8}\selectfont\MakeUppercase{#2}}\par
+  \vspace{0.13em}{\color{rulegray}\rule{\linewidth}{0.55pt}}\vspace{0.15em}
+}
+
+\newcommand{\entryhead}[3]{%
+  \begin{tabularx}{\linewidth}{@{}>{\sffamily\bfseries\color{navy}}X >{\sffamily\raggedleft\arraybackslash\color{muted}}p{3.05cm}@{}}
+    #1\quad{\color{teal}\textbar}\quad #2 & #3
+  \end{tabularx}\vspace{0.08em}
+}
+
+\newenvironment{tightitems}{%
+  \begin{itemize}[leftmargin=1.20em,itemsep=0.05em,topsep=0.05em,parsep=0pt,partopsep=0pt,label=\textcolor{teal}{\raisebox{0.15ex}{\scriptsize\textbullet}}]
+}{\end{itemize}\vspace{0.07em}}
+
+\newcommand{\skillline}[2]{%
+  \par\noindent\hangindent=1.72cm\hangafter=1%
+  \makebox[1.62cm][l]{\sffamily\bfseries\color{navy}#1}#2\par\vspace{0.10em}%
+}
+
+\begin{document}
+\color{ink}
+\fontsize{10.05}{11.65}\selectfont
+
+
+% Header
+\begin{minipage}[t]{0.82\linewidth}
+  \vspace{0pt}
+  {\sffamily\fontsize{28}{30}\selectfont\bfseries\color{navy} 龙潇}%
+  \hspace{0.55em}{\sffamily\fontsize{9}{10}\selectfont\color{muted}LONG XIAO}%
+  \hspace{1.15em}\raisebox{-0.20cm}{\href{https://longxiao2001.github.io}{\includegraphics[width=0.88cm,height=0.88cm]{long_xiao_homepage_qr.png}}}\par
+  \vspace{0.34em}
+  {\sffamily\fontsize{13}{15}\selectfont\bfseries\color{navy}视频生成 · 世界模型 · 实时交互式音视频生成}\par
+  \vspace{0.62em}
+  {\sffamily\color{muted}\fontsize{9.15}{10.9}\selectfont
+  17383126759\quad\textbar\quad \href{mailto:1215497652@qq.com}{1215497652@qq.com}\quad\textbar\quad
+  \href{https://longxiao2001.github.io}{longxiao2001.github.io}}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.125\linewidth}
+  \vspace{0pt}\raggedleft
+  \fcolorbox{teal}{white}{\includegraphics[width=1.64cm,height=2.20cm,keepaspectratio]{long_xiao_photo.jpg}}
+\end{minipage}
+
+
+\vspace{-0.14em}
+\sectiontitle{教育背景}{Education}
+
+\begin{tabularx}{\linewidth}{@{}X >{\raggedleft\arraybackslash}p{3.2cm}@{}}
+  {\sffamily\textbf{北京航空航天大学}}｜自动化科学与电气工程学院｜硕士 & {\sffamily 2024.09--至今}\\[-0.08em]
+  {\sffamily\color{muted}学业表现：均分 \textbf{\color{teal}91.08}\quad\textbar\quad 专业排名 \textbf{\color{teal}前 10\%}} & \\
+  {\sffamily\textbf{东南大学}}｜自动化学院｜本科 & {\sffamily 2020.09--2024.06}\\[-0.08em]
+  {\sffamily\color{muted}学业表现：均分 \textbf{\color{teal}88.32}\quad\textbar\quad 专业排名 \textbf{\color{teal}前 30\%}} &
+\end{tabularx}
+\vspace{0.08em}
+% {\fontsize{8.65}{10.1}\selectfont\color{muted}\textbf{本科核心课程：}线性代数（93）、自动控制原理（90 / 92）、计算机程序设计（90）、数据结构（91）、工科数学分析 I（88）、数字图像处理、机器视觉}
+
+\sectiontitle{实习与研究经历}{Research Experience}
+
+\entryhead{腾讯}{实时流式交互音视频生成 / 世界模型}{2026.06--2026.09}
+\begin{tightitems}
+  \item 面向\textbf{实时流式可交互音视频生成}，以 \textbf{LTX-2.3} 为基座，承担\textbf{数据处理、模型训练与推理优化}的完整研发流程。
+  \item 借鉴帧并行 \textbf{Teacher Forcing} 使用真实长视频数据完成原双向扩散模型\textbf{因果化训练}；为缓解训练-推理分布偏移及长序列误差累积，进一步引入 \mbox{\textbf{Resample Forcing}}并参考\textbf{MOBA}做长序列的KV Cache策略。
+  \item 参考 \textbf{Long Live 2.0} 构建流式生成中的条件更新机制，实现\textbf{生成过程中 Prompt 在线切换与连续响应}，使模型具备面向交互式场景的动态内容控制能力。
+  \item 在因果化模型上推进 \textbf{DMD 少步蒸馏}，通过分布匹配目标压缩扩散采样步数，并通过\textbf{Timestep-Forcing多卡并行推理}，面向实时部署优化\textbf{生成吞吐与端到端推理时延}。最终在\textbf{4*H800}上实现\textbf{43fps}，\textbf{512*768}的\textbf{分钟级别}长视频。
+\end{tightitems}
+
+\entryhead{阿里巴巴}{AIGC 视频生成算法}{2025.10--2026.04}
+\begin{tightitems}
+  \item 基于 \textbf{Wan2.2} 开展 \textbf{LoRA 微调}，设计 \textbf{token-level timestep map}，使不同时间片段与空间区域采用差异化去噪进程，实现视频内容的\textbf{时空局部重绘}；
+  \item 搭建 \textbf{UE Metahuman 单目表情参数提取与 3D 动画渲染管线}；构建 \textbf{2D 表情迁移 benchmark}，并参与表情编辑训练数据生产、质量筛选与验证，形成数据到评测的闭环。\href{https://youku-aigc.github.io/PerformRecast/}{[Project Page]}
+\end{tightitems}
+
+\entryhead{右脑科技}{2D Talking Avatar}{2025.06--2025.10}
+\begin{tightitems}
+  \item 基于 \textbf{VACE、LivePortrait} 融合 \textbf{Pose / Text / Audio} 条件，实现多模态可控的 2D 数字人生成；采用\textbf{分段生成与跨片段衔接}扩展连续视频生成时长。
+  \item 推理侧基于 \textbf{CausVid 蒸馏}压缩采样步数，结合\textbf{显存切片、权重动态加载}，在\textbf{单张 RTX 4090}上完成 VACE 14B 推理；集成论文解析、PPT 生成与数字人口播，形成端到端论文讲解视频智能体。
+\end{tightitems}
+
+\entryhead{腾讯}{LLM 驱动的交互游戏 NPC}{2025.02--2025.06}
+\begin{tightitems}
+  \item 设计并集成 \textbf{ASR-LLM-TTS-UE} 端到端交互链路，覆盖玩家语音输入、上下文对话、语音合成与数字人驱动；完成\textbf{系统模块化封装、接口编排与推理流程联调}。
+\end{tightitems}
+
+\entryhead{本科毕业设计}{3D 数字人表情生成}{2024.01--2024.06}
+\begin{tightitems}
+  \item 面向\textbf{语音驱动的情感化 3D 数字人表情生成}，使用 \textbf{WavLM} 编码语音表征，将音频、情绪标签与种子表情建模为联合条件，提升生成序列对语义、韵律与情绪状态的响应能力。
+  \item 基于\textbf{DIT}预测连续面部表情序列，并接入 \textbf{Metahuman} 完成表情动画渲染、音画同步及音视频合成，形成从条件输入到数字人视频输出的完整管线。
+\end{tightitems}
+
+\sectiontitle{论文成果}{Publications}
+
+\begin{enumerate}[leftmargin=1.5em,itemsep=0.10em,topsep=0.06em,parsep=0pt]
+  \item Z. Chen, \textbf{X. Long}, L. Zhang and W. Cai. ``Toward Diffusion-Based Deep Reinforcement Learning for Discrete Decision-Making: Methods and Evaluations.'' \textit{IEEE Transactions on Network Science and Engineering}.
+  \item J. Liang, B. Xiong, J. Tian, H. Li, \textbf{X. Long}, Y. Zheng, H. Fu. ``PerformRecast: Expression and Head Pose Disentanglement for Portrait Video Editing.'' \textit{CVPR 2026}. \href{https://youku-aigc.github.io/PerformRecast/}{[Project Page]}
+\end{enumerate}
+
+\sectiontitle{技术能力与综合亮点}{Skills \& Activities}
+
+\skillline{技术方法}{Causal Video Generation, Diffusion / Transformer, Flow Matching, LoRA, Teacher / Resample Forcing, DMD}
+\skillline{模型框架}{LTX-2.3, Wan2.2, CogVideoX, MiniMax-H3, VACE, UE Metahuman, LangGraph}
+\skillline{工程能力}{数据构建与筛选、训练实验设计、显存与推理优化、效果评估、系统集成服务部署}
+\skillline{综合素质}{BEATBOX 协会会长；重庆市美术类联考 546 / 11900、北影第 32 名}
+
+\end{document}
