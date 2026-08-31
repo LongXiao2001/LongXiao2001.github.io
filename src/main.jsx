@@ -96,7 +96,7 @@ function App() {
     <section className="hero" id="top">
       <div className="hero-copy">
         <h1><span>龙潇</span><small>LONG XIAO</small></h1><h2>{t.heroTitle}</h2><p className="hero-field">{t.heroBody}</p>
-        <div className="hero-actions"><a className="button primary" href="#work">{t.explore}<ArrowIcon /></a><a className="button" href="./reference/Long_Xiao_AIGC_Resume.tex">{t.resume}</a></div>
+        <div className="hero-actions"><a className="button primary" href="#work">{t.explore}<ArrowIcon /></a><a className="button" href="./reference/Long_Xiao_AIGC_Resume.pdf">{t.resume}</a></div>
         <dl className="identity-list"><div><dt>01</dt><dd>{t.school}</dd></div><div><dt>02</dt><dd>{t.role}</dd></div><div><dt>03</dt><dd>{t.location}</dd></div></dl>
       </div>
       <div className="hero-player" aria-label="120-frame causal video generation visualization"><Player component={HeroSequence} durationInFrames={120} compositionWidth={1280} compositionHeight={720} fps={30} autoPlay loop initiallyMuted controls={false} acknowledgeRemotionLicense style={{width: '100%'}} /></div>
