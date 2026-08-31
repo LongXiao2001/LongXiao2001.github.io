@@ -59,14 +59,14 @@ img, video { display: block; width: 100%; }
 .sequence-canvas { overflow: hidden; color: #16181d; background: #fff; font-family: "IBM Plex Mono", monospace; }
 .sequence-label { position: absolute; top: 5%; left: 3%; color: var(--blue); font-size: 18px; font-weight: 500; }
 .sequence-ticks { position: absolute; top: 10%; left: 3%; right: 3%; display: flex; justify-content: space-between; font-size: 13px; }
-.sequence-frames { --reveal: 1; position: absolute; top: 15%; left: 3%; right: 3%; height: 38%; overflow: hidden; background: #dfe3eb; }
+.sequence-frames { --reveal: 1; position: absolute; top: 15%; left: 3%; right: 3%; height: 48%; overflow: hidden; background: #dfe3eb; }
 .sequence-video { height: 100%; object-fit: cover; object-position: center 42%; clip-path: inset(0 calc((1 - var(--reveal)) * 100%) 0 0); filter: saturate(.75) contrast(1.08); }
 .latent-field { position: absolute; inset: 0; z-index: 1; opacity: calc(1 - var(--reveal)); background-color: #e6e9ef; background-image: repeating-radial-gradient(circle at 20% 30%, #2357ff 0 1px, transparent 1px 4px), repeating-radial-gradient(circle at 70% 55%, #ff5a2a 0 1px, transparent 1px 5px); background-size: 9px 9px, 13px 13px; }
 .frame-grid { position: absolute; z-index: 2; inset: 0; pointer-events: none; background: repeating-linear-gradient(90deg, transparent 0 calc(14.28% - 1px), rgba(255,255,255,.85) calc(14.28% - 1px) 14.28%); }
 .sequence-playhead { position: absolute; z-index: 3; top: 11%; bottom: 6%; width: 2px; background: var(--orange); }
 .sequence-playhead::after { content: ""; position: absolute; top: 42%; left: -6px; width: 13px; height: 13px; background: var(--orange); }
 .sequence-playhead span { position: absolute; top: 0; left: 8px; color: var(--orange); font-size: 16px; font-weight: 500; }
-.sequence-tracks { position: absolute; top: 58%; left: 3%; right: 3%; display: grid; grid-template-columns: 150px 1fr; gap: 18px 20px; align-items: center; color: var(--blue); font-size: 12px; }
+.sequence-tracks { position: absolute; top: 68%; left: 3%; right: 3%; display: grid; grid-template-columns: 150px 1fr; gap: 18px 20px; align-items: center; color: var(--blue); font-size: 12px; }
 .sequence-tracks i { height: 13px; background: var(--blue); transform-origin: left; }
 .sequence-tracks i:nth-of-type(2) { height: 27px; background: repeating-linear-gradient(90deg, #95bea5 0 8%, transparent 8% 10%); clip-path: polygon(0 0, 100% 78%, 100% 100%, 0 100%); }
 .sequence-tracks .wave-track { height: 28px; background: repeating-linear-gradient(90deg, transparent 0 8px, #2357ff 8px 10px, transparent 10px 14px); clip-path: polygon(0 45%, 5% 24%, 9% 70%, 15% 35%, 23% 63%, 31% 20%, 38% 80%, 48% 30%, 57% 58%, 66% 18%, 73% 72%, 82% 38%, 90% 65%, 100% 45%, 100% 55%, 0 55%); }
