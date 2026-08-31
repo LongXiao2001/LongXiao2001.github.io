@@ -11,7 +11,7 @@ gsap.registerPlugin(ScrollTrigger);
 const copy = {
   zh: {
     nav: ['简介', '项目', '论文', '能力', '联系'], heroTitle: '实时生成，虚拟交互。',
-    heroBody: '视频生成 · 世界模型 · 实时交互式音视频生成', role: 'AIGC 与视频生成算法研究员',
+    heroBody: '视频生成 · 世界模型 · 实时交互式音视频生成', role: 'AIGC视频生成算法研究员',
     school: '北京航空航天大学 · 硕士研究生', location: '北京，中国', explore: '查看研究项目', resume: '查看简历',
     aboutLabel: '关于我', aboutTitle: '我在做一件具体的事：让生成模型更快、更长，也更可交互。',
     aboutBody: '我从语音驱动的 3D 数字人出发，沿着 2D 视频生成、时空局部编辑与实时因果生成持续深入。我的工作横跨数据构建、模型训练、推理优化与系统集成，希望把生成模型从离线样片推进到可以实时响应人的连续世界。',
@@ -45,7 +45,7 @@ const projects = [
   {
     zh: {title: '2D Talking Avatar', org: '右脑科技 · 2025.06–2025.10', body: '融合 Pose、Text 与 Audio 条件，实现多模态可控数字人生成。采用分段生成与跨片段衔接扩展时长，并以 CausVid 蒸馏、显存切片和权重动态加载在单张 RTX 4090 上完成 VACE 14B 推理。'},
     en: {title: '2D Talking Avatar', org: 'RightBrain AI · Jun–Oct 2025', body: 'Combined pose, text, and audio conditioning for controllable avatars. Extended duration through segmented generation and cross-clip continuity, then deployed VACE 14B on one RTX 4090 with CausVid distillation and memory optimization.'},
-    video: './media/talking-avatar.mp4', tags: ['VACE', 'LivePortrait', 'CausVid', 'RTX 4090'],
+    video: './media/talking-avatar2.mp4', tags: ['VACE', 'LivePortrait', 'CausVid', 'RTX 4090'],
   },
   {
     zh: {title: 'LLM 驱动的交互游戏 NPC', org: '腾讯 · 2025.02–2025.06', body: '设计并集成 ASR–LLM–TTS–UE 端到端交互链路，覆盖玩家语音输入、上下文对话、语音合成与数字人驱动，完成系统模块化封装与推理流程联调。'},

@@ -60,7 +60,7 @@ img, video { display: block; width: 100%; }
 .sequence-label { position: absolute; top: 5%; left: 3%; color: var(--blue); font-size: 18px; font-weight: 500; }
 .sequence-ticks { position: absolute; top: 10%; left: 3%; right: 3%; display: flex; justify-content: space-between; font-size: 13px; }
 .sequence-frames { --reveal: 1; position: absolute; top: 15%; left: 3%; right: 3%; height: 38%; overflow: hidden; background: #dfe3eb; }
-.sequence-video { height: 100%; object-fit: cover; clip-path: inset(0 calc((1 - var(--reveal)) * 100%) 0 0); filter: saturate(.75) contrast(1.08); }
+.sequence-video { height: 100%; object-fit: cover; object-position: center 42%; clip-path: inset(0 calc((1 - var(--reveal)) * 100%) 0 0); filter: saturate(.75) contrast(1.08); }
 .latent-field { position: absolute; inset: 0; z-index: 1; opacity: calc(1 - var(--reveal)); background-color: #e6e9ef; background-image: repeating-radial-gradient(circle at 20% 30%, #2357ff 0 1px, transparent 1px 4px), repeating-radial-gradient(circle at 70% 55%, #ff5a2a 0 1px, transparent 1px 5px); background-size: 9px 9px, 13px 13px; }
 .frame-grid { position: absolute; z-index: 2; inset: 0; pointer-events: none; background: repeating-linear-gradient(90deg, transparent 0 calc(14.28% - 1px), rgba(255,255,255,.85) calc(14.28% - 1px) 14.28%); }
 .sequence-playhead { position: absolute; z-index: 3; top: 11%; bottom: 6%; width: 2px; background: var(--orange); }
