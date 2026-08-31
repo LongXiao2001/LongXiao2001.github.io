@@ -16,7 +16,7 @@ const copy = {
     aboutLabel: '关于我', aboutTitle: '我在做一件具体的事：让生成模型更快、更长，也更可交互。',
     aboutBody: '我从语音驱动的 3D 数字人出发，沿着 2D 视频生成、时空局部编辑与实时因果生成持续深入。我的工作横跨数据构建、模型训练、推理优化与系统集成，希望把生成模型从离线样片推进到可以实时响应人的连续世界。',
     facts: [['研究方向', '因果视频生成、扩散模型、世界模型与数字人'], ['实践路径', '腾讯、阿里巴巴与创业团队的模型研发经历'], ['工程取向', '从训练实验到部署性能，关注完整闭环']],
-    beyond: '研究之外，我画画、打 Beatbox 和架子鼓，也保持健身。美术训练让我习惯观察结构、节奏和细节——这些也影响着我理解运动与生成。',
+    beyond: '研究之外，我画画、打 Beatbox 和架子鼓，也保持健身。美术和音乐训练提升我在生成模型研究中的品味。',
     research: '研究与项目', publications: '论文成果', skills: '技术能力', education: '教育背景', contact: '保持联系', viewProject: '查看项目页', play: '播放项目视频',
   },
   en: {
@@ -26,7 +26,7 @@ const copy = {
     aboutLabel: 'About me', aboutTitle: 'I build generative video systems that are faster, longer, and responsive.',
     aboutBody: 'My path started with speech-driven 3D digital humans and moved through controllable 2D generation, spatiotemporal editing, and real-time causal video. I work across data, training, inference optimization, and system integration—pushing generative models beyond offline clips toward continuous worlds that can respond to people.',
     facts: [['Research', 'Causal video generation, diffusion, world models, digital humans'], ['Experience', 'Model R&D across Tencent, Alibaba, and a startup team'], ['Engineering', 'End-to-end work from training experiments to deployment']],
-    beyond: 'Beyond research, I draw, beatbox, play drums, and train. Art taught me to notice structure, rhythm, and detail—the same instincts shape how I think about motion and generation.',
+    beyond: 'Beyond research, I draw, beatbox, play drums, and train. Art and music training enhance my taste in generative model research.',
     research: 'Research & selected work', publications: 'Publications', skills: 'Technical practice', education: 'Education', contact: 'Let’s connect', viewProject: 'Project page', play: 'Play project video',
   },
 };
