@@ -102,8 +102,17 @@ img, video { display: block; width: 100%; }
 .project-head p { margin: 0; color: var(--muted); font: 500 11px/1.4 "IBM Plex Mono", monospace; }
 .project-head > strong { color: var(--blue); font: 500 12px/1.3 "IBM Plex Mono", monospace; text-align: right; }
 .project-layout { display: grid; grid-template-columns: minmax(0, 1.65fr) minmax(280px, .75fr); gap: clamp(26px, 4vw, 70px); align-items: start; }
+.project-layout-stream { grid-template-columns: minmax(0, 1.9fr) minmax(260px, .7fr); }
 .project-media { background: var(--ink); overflow: hidden; }
 .project-media video { aspect-ratio: 16/9; object-fit: contain; max-height: 68vh; }
+.project-media.stream { background: #f4f6fa; }
+.project-media.stream video { aspect-ratio: 2/1; max-height: 62vh; }
+.stream-demos { min-width: 0; }
+.demo-switcher { display: flex; flex-wrap: wrap; gap: 12px 28px; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line); }
+.demo-group { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.demo-group span { color: var(--blue); font: 500 10px/1 "IBM Plex Mono", monospace; letter-spacing: .04em; }
+.demo-group button { min-height: 32px; padding: 0 11px; border: 1px solid var(--line); background: none; cursor: pointer; font: 500 11px/1 "IBM Plex Mono", monospace; }
+.demo-group button.active, .demo-group button:hover { color: white; background: var(--blue); border-color: var(--blue); }
 .project-copy { padding-top: 4px; }
 .project-copy > p { margin: 0; font-size: 15px; line-height: 1.8; }
 .project-copy ul { margin: 26px 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
@@ -134,7 +143,7 @@ img, video { display: block; width: 100%; }
 .education-list h3 { margin: 48px 0 8px; font-size: 22px; }
 .education-list p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.6; }
 
-footer { min-height: 330px; padding: 64px var(--gutter) 24px; display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 24px; background: var(--ink); color: white; }
+footer { min-height: 330px; padding: 64px var(--gutter) 24px; display: grid; grid-template-columns: minmax(180px, 1.4fr) repeat(3, minmax(0, 1fr)); gap: 24px; background: var(--ink); color: white; }
 footer span { color: #9cadff; font: 500 11px/1 "IBM Plex Mono", monospace; }
 footer h2 { margin: 15px 0; font-size: clamp(40px, 5vw, 72px); letter-spacing: -.055em; }
 footer > a { height: max-content; padding: 13px 0; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #51545b; font-size: 14px; }
@@ -149,8 +158,11 @@ footer > p { grid-column: 1/-1; align-self: end; margin: 0; color: #92959d; font
   .hero-player { padding: 24px var(--gutter) 42px; }
   .project-layout { grid-template-columns: 1fr; }
   .project-copy { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+  .demo-group button { min-height: 36px; }
   .project-copy ul { margin: 0; }
   .skill-grid { grid-template-columns: 1fr 1fr; }
+  footer { grid-template-columns: 1fr 1fr; }
+  footer > p { grid-column: 1 / -1; }
 }
 @media (max-width: 680px) {
   .site-header { height: 56px; }

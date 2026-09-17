@@ -4,3 +4,7 @@ design-concepts/
 .DS_Store
 attachments/
 
+# Private working notes and editor backups — this repo is public, keep them local.
+reference/*.md
+reference/*.bak
+reference/*.bak-*

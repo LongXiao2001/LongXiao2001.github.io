@@ -11,62 +11,95 @@ gsap.registerPlugin(ScrollTrigger);
 const copy = {
   zh: {
     nav: ['简介', '项目', '论文', '能力', '联系'], heroTitle: '实时生成，虚拟交互。',
-    heroBody: '视频生成 · 世界模型 · 实时交互式音视频生成', role: 'AIGC视频生成算法研究员',
+    heroBody: '流式音视频联合生成 · 视频生成 · 视频生成 Agent', role: 'AIGC视频生成算法研究员',
     school: '北京航空航天大学 · 硕士研究生', location: '北京，中国', explore: '查看研究项目', resume: '查看简历',
     aboutLabel: '关于我', aboutTitle: '我在做一件具体的事：让生成模型更快、更长，也更可交互。',
-    aboutBody: '我从语音驱动的 3D 数字人出发，沿着 2D 视频生成、时空局部编辑与实时因果生成持续深入。我的工作横跨数据构建、模型训练、推理优化与系统集成，希望把生成模型从离线样片推进到可以实时响应人的连续世界。',
-    facts: [['研究方向', '因果视频生成、扩散模型、世界模型与数字人'], ['实践路径', '腾讯、阿里巴巴与创业团队的模型研发经历'], ['工程取向', '从训练实验到部署性能，关注完整闭环']],
+    aboutBody: '我从语音驱动的 3D 数字人出发，沿着 2D 视频生成、时空局部编辑与实时流式音视频生成持续深入。工作覆盖数据构建、模型训练、推理优化与系统集成，也包含把生成链路收成可运行的视频 Agent。',
+    facts: [['研究方向', '流式音视频生成、时空局部编辑、视频生成 Agent'], ['实践路径', '腾讯、阿里巴巴与创业团队的模型研发经历'], ['工程取向', '从训练实验到部署性能，关注完整闭环']],
     beyond: '研究之外，我画画、打 Beatbox 和架子鼓，也保持健身。美术和音乐训练提升我在生成模型研究中的品味。',
     research: '研究与项目', publications: '论文成果', skills: '技术能力', education: '教育背景', contact: '保持联系', viewProject: '查看项目页', play: '播放项目视频',
+    presetPrompt: '预设 Prompt', customPrompt: '在线切换 Prompt',
   },
   en: {
     nav: ['About', 'Work', 'Papers', 'Skills', 'Contact'], heroTitle: 'Real-time generation, interactive experiences.',
-    heroBody: 'Video generation · world models · interactive audio-visual systems', role: 'AIGC & Video Generation Researcher',
+    heroBody: 'Streaming audio-video generation · video generation · video agents', role: 'AIGC & Video Generation Researcher',
     school: 'M.S. student · Beihang University', location: 'Beijing, China', explore: 'Explore selected work', resume: 'View résumé',
     aboutLabel: 'About me', aboutTitle: 'I build generative video systems that are faster, longer, and responsive.',
-    aboutBody: 'My path started with speech-driven 3D digital humans and moved through controllable 2D generation, spatiotemporal editing, and real-time causal video. I work across data, training, inference optimization, and system integration—pushing generative models beyond offline clips toward continuous worlds that can respond to people.',
-    facts: [['Research', 'Causal video generation, diffusion, world models, digital humans'], ['Experience', 'Model R&D across Tencent, Alibaba, and a startup team'], ['Engineering', 'End-to-end work from training experiments to deployment']],
+    aboutBody: 'My path started with speech-driven 3D digital humans and moved through controllable 2D generation, spatiotemporal editing, and real-time streaming audio-video. I work across data, training, inference, and system integration, including turning generation pipelines into runnable video agents.',
+    facts: [['Research', 'Streaming audio-video, spatiotemporal editing, video agents'], ['Experience', 'Model R&D across Tencent, Alibaba, and a startup team'], ['Engineering', 'End-to-end work from training experiments to deployment']],
     beyond: 'Beyond research, I draw, beatbox, play drums, and train. Art and music training enhance my taste in generative model research.',
     research: 'Research & selected work', publications: 'Publications', skills: 'Technical practice', education: 'Education', contact: 'Let’s connect', viewProject: 'Project page', play: 'Play project video',
+    presetPrompt: 'Preset prompts', customPrompt: 'Live prompt switching',
   },
 };
 
+const streamDemos = [
+  {id: 'magic', group: 'preset', src: './media/stream-ltx-preset-magic-woman.mp4', zh: '魔法女性', en: 'Mage'},
+  {id: 'paper', group: 'preset', src: './media/stream-ltx-preset-paper-cut.mp4', zh: '剪纸', en: 'Paper cut'},
+  {id: 'fox', group: 'preset', src: './media/stream-ltx-preset-fox.mp4', zh: '狐狸茶室', en: 'Fox teahouse'},
+  {id: 'prompt', group: 'custom', src: './media/stream-ltx-custom-prompt.mp4', zh: '在线改 Prompt', en: 'Live prompt edit'},
+  {id: 'qq', group: 'custom', src: './media/stream-ltx-custom-qq.mp4', zh: '自定义角色', en: 'Custom character'},
+];
+
 const projects = [
   {
-    zh: {title: '实时流式交互音视频生成', org: '腾讯 · 2026.06–2026.09', body: '以 LTX-2.3 为基座完成双向扩散模型因果化训练，引入 Resample Forcing 与长序列 KV Cache 策略，支持生成过程中 Prompt 在线切换与连续响应。推进 DMD 少步蒸馏与 Timestep-Forcing 多卡并行推理。'},
-    en: {title: 'Streaming Causal Video Generation', org: 'Tencent · Jun–Sep 2026', body: 'Causalized LTX-2.3 with real long-video data, Resample Forcing, and long-context KV-cache strategies. Added online prompt updates, DMD few-step distillation, and multi-GPU Timestep-Forcing inference.'},
-    metric: '43 FPS · 4×H800 · 512×768 · minute-long', video: './media/streaming-causal.mp4', images: ['./media/streaming-training.png', './media/streaming-parallelism.png'], tags: ['LTX-2.3', 'Causal Diffusion', 'DMD', 'Timestep-Forcing'],
+    zh: {title: '实时流式可交互音视频生成', org: '腾讯 · 2026.06–2026.09', body: '把双向 LTX-2.3 改造为块因果模型：按 1 秒对齐音视频联合块，并对全部 6 路注意力加因果掩码。Teacher Forcing 之后用 Resample Forcing 缓解误差累积；长序列 KV 分为 anchor、内容 memory 与 FIFO。分层 Prompt 支持流式过程中在线切换；去噪级多卡流水配合少步蒸馏，512×768 下达到 43 fps（仅 DiT 稳态去噪吞吐，不含文本编码、VAE / 音频解码与封装）、十分钟级连续生成无误差累积。'},
+    en: {title: 'Streaming Interactive Audio-Video Generation', org: 'Tencent · Jun–Sep 2026', body: 'Turned bidirectional LTX-2.3 into a block-causal model with 1-second AV chunks and causal masks on all six attention paths. Teacher then Resample Forcing reduces exposure bias; a three-tier KV cache holds long context. Hierarchical prompts enable live switching during generation; denoising-level multi-GPU pipelining with few-step distillation reaches 43 fps at 512×768 (steady-state DiT throughput, excluding text encoding, VAE and audio decoding and muxing) for ten-minute streams with no visible drift.'},
+    metric: '43 FPS (DiT only) · 512×768 · 10-min continuous', videos: streamDemos, images: ['./media/streaming-training.png', './media/streaming-parallelism.png'], tags: ['LTX-2.3', 'Block-Causal', 'Resample Forcing', 'Live Prompt'], link: 'https://longxiao2001.github.io/StreamLTX/',
   },
   {
-    zh: {title: '视频时空局部重绘', org: '阿里巴巴 · 2025.10–2026.04', body: '基于 Wan2.2 进行 LoRA 微调，设计 token-level timestep map，让不同时间片段与空间区域采用差异化去噪进程，实现视频内容的时空局部重绘。'},
-    en: {title: 'Spatiotemporal Video Repainting', org: 'Alibaba · Oct 2025–Apr 2026', body: 'Fine-tuned Wan2.2 with LoRA and designed a token-level timestep map so different temporal segments and spatial regions follow distinct denoising schedules.'},
-    video: './media/repaint-demo.mp4', images: ['./media/repaint-framework.png'], tags: ['Wan2.2', 'LoRA', 'Timestep Map', 'Video Editing'],
+    zh: {title: '视频时空局部重绘', org: '阿里巴巴 · 2025.10–2026.04', body: '基于 Wan2.2 做时空局部重绘，用逐帧向量化 timestep 代替额外掩码分支：flow matching 中的 σ 作为逐位置混合权重，保留、重绘或做部分编辑，不改模型结构。结构化重绘课程配合边界平滑，并按高低噪专家分别训练 LoRA，可指定任意时间段重绘而其余片段不变。'},
+    en: {title: 'Spatiotemporal Video Repainting', org: 'Alibaba · Oct 2025–Apr 2026', body: 'Repainted Wan2.2 video with per-frame vectorized timesteps instead of a mask branch: σ in flow matching is a per-location mix weight for keep, edit, or full redraw, with no extra parameters. A structured curriculum and split LoRAs for high/low-noise experts let any time span be edited while the rest stays fixed.'},
+    video: './media/repaint-demo.mp4', images: ['./media/repaint-framework.png'], tags: ['Wan2.2', 'Vectorized Timestep', 'LoRA', 'Video Editing'], link: 'https://youku-aigc.github.io/PerformRecast/',
   },
   {
-    zh: {title: '2D Talking Avatar', org: '右脑科技 · 2025.06–2025.10', body: '融合 Pose、Text 与 Audio 条件，实现多模态可控数字人生成。采用分段生成与跨片段衔接扩展时长，并以 CausVid 蒸馏、显存切片和权重动态加载在单张 RTX 4090 上完成 VACE 14B 推理。'},
-    en: {title: '2D Talking Avatar', org: 'RightBrain AI · Jun–Oct 2025', body: 'Combined pose, text, and audio conditioning for controllable avatars. Extended duration through segmented generation and cross-clip continuity, then deployed VACE 14B on one RTX 4090 with CausVid distillation and memory optimization.'},
-    video: './media/talking-avatar2.mp4', tags: ['VACE', 'LivePortrait', 'CausVid', 'RTX 4090'],
+    zh: {title: '2D Talking Avatar 与论文讲解视频 Agent', org: '右脑科技 · 2025.06–2025.10', body: '融合 Pose / Text / Audio 条件生成 2D 数字人，分段生成并跨片段衔接扩展时长，再用 CausVid 蒸馏把采样压到少步。同时用 LangGraph 搭建论文讲解视频 Agent：PDF 解析、大纲与口播稿、幻灯片、TTS、数字人口播到成片，并用 TTS 字符级时间戳对齐分镜时长。'},
+    en: {title: '2D Talking Avatar & Paper-Talk Video Agent', org: 'RightBrain AI · Jun–Oct 2025', body: 'Fused pose, text, and audio for controllable 2D avatars, extending duration with segmented generation and CausVid few-step distillation. Built a LangGraph paper-talk video agent from PDF parsing through slides, TTS, avatar delivery, and muxing, using character-level TTS timestamps as the shot clock.'},
+    video: './media/talking-avatar2.mp4', tags: ['VACE', 'LivePortrait', 'LangGraph', 'Video Agent'],
   },
   {
-    zh: {title: 'LLM 驱动的交互游戏 NPC', org: '腾讯 · 2025.02–2025.06', body: '设计并集成 ASR–LLM–TTS–UE 端到端交互链路，覆盖玩家语音输入、上下文对话、语音合成与数字人驱动，完成系统模块化封装与推理流程联调。'},
-    en: {title: 'LLM-driven Interactive Game NPC', org: 'Tencent · Feb–Jun 2025', body: 'Designed an ASR–LLM–TTS–Unreal end-to-end loop for player speech, contextual dialogue, synthesis, and avatar control, including modular services and inference orchestration.'},
+    zh: {title: 'LLM 驱动的交互游戏 NPC', org: '腾讯 · 2025.02–2025.06', body: '设计并集成 ASR–LLM–TTS–UE 端到端交互链路，完成模块封装、接口编排与推理流程联调，并在各环节间分配时延预算，满足实时交互。'},
+    en: {title: 'LLM-driven Interactive Game NPC', org: 'Tencent · Feb–Jun 2025', body: 'Designed an ASR–LLM–TTS–Unreal end-to-end loop, packaged the modules, orchestrated inference, and allocated latency budgets across stages for real-time interaction.'},
     video: './media/npc-demo.mp4', images: ['./media/npc-framework.png'], tags: ['ASR', 'LLM', 'TTS', 'Unreal Engine'],
   },
   {
-    zh: {title: '3D 数字人表情生成', org: '本科毕业设计 · 2024.01–2024.06', body: '使用 WavLM 编码语音表征，将音频、情绪标签与种子表情作为联合条件，以 DiT 预测连续面部表情序列，并接入 Metahuman 完成动画渲染与音画同步。'},
-    en: {title: '3D Digital Human Expression Generation', org: 'Undergraduate thesis · Jan–Jun 2024', body: 'Encoded speech with WavLM and conditioned a DiT on audio, emotion labels, and seed expressions to predict continuous facial animation, rendered and synchronized through MetaHuman.'},
-    video: './media/digital-human.mp4', images: ['./media/digital-human-framework.png'], tags: ['WavLM', 'DiT', 'MetaHuman', 'Facial Animation'],
+    zh: {title: '语音驱动的情感化 3D 数字人表情生成', org: '本科毕业设计 · 2024.01–2024.06', body: '冻结 WavLM-Large 编码语音，与情绪嵌入和种子表情共同作为条件，在 185 维 Metahuman control rig 上做扩散生成，并加入速度损失抑制抖动。长音频按窗口滚动生成，重叠区线性混合，导出 JSON 驱动 Metahuman 渲染。'},
+    en: {title: 'Speech-driven Emotional 3D Expression Generation', org: 'Undergraduate thesis · Jan–Jun 2024', body: 'Froze WavLM-Large for speech, conditioned a diffusion backbone on emotion embeddings and seed expressions, and generated 185-dim MetaHuman control-rig motion with a velocity loss to suppress jitter. Long audio is rolled in overlapping windows and exported as JSON for rendering.'},
+    video: './media/digital-human.mp4', images: ['./media/digital-human-framework.png'], tags: ['WavLM', 'Diffusion', 'MetaHuman', 'Facial Animation'],
   },
 ];
 
 const skillGroups = [
-  ['Generative modeling', 'Diffusion · Flow Matching · Transformer · Forcing · LoRA · DMD'],
-  ['Video & world models', 'LTX-2.3 · Wan2.2 · VACE · CogVideoX · World Models'],
-  ['Training & systems', 'PyTorch · Data pipelines · Multi-GPU · Deployment · LangGraph'],
-  ['Interactive media', 'Audio / Video · UE MetaHuman'],
+  ['Causal generation', 'Block-Causal Attention · Teacher / Resample Forcing · KV Cache'],
+  ['Models', 'LTX-2.3 · Wan2.2 · CogVideoX · MiniMax-H3 · VACE'],
+  ['Training & inference', 'Few-step distillation · Timestep parallelism · LoRA · LangGraph'],
+  ['Interactive media', 'Streaming AV · UE MetaHuman · Video Agent'],
 ];
 
 function ArrowIcon() { return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" /></svg>; }
+
+function StreamDemoReel({videos, lang, playLabel, labels}) {
+  const [active, setActive] = useState(0);
+  const clip = videos[active];
+  const groups = [
+    {id: 'preset', label: labels.presetPrompt},
+    {id: 'custom', label: labels.customPrompt},
+  ];
+
+  return <div className="stream-demos">
+    <div className="project-media media-mask stream">
+      <video key={clip.src} src={clip.src} controls playsInline preload="metadata" aria-label={`${playLabel}: ${clip[lang]}`} />
+    </div>
+    <div className="demo-switcher">
+      {groups.map((group) => <div className="demo-group" key={group.id}>
+        <span>{group.label}</span>
+        {videos.map((clipItem, index) => clipItem.group === group.id && (
+          <button key={clipItem.id} type="button" className={index === active ? 'active' : ''} onClick={() => setActive(index)}>{clipItem[lang]}</button>
+        ))}
+      </div>)}
+    </div>
+  </div>;
+}
 
 function App() {
   const [lang, setLang] = useState('zh');
@@ -114,8 +147,12 @@ function App() {
       {projects.map((project, index) => { const p = project[lang]; return <article className="project" key={project.en.title}>
         <div className="project-index"><b>{String(index + 1).padStart(2, '0')}</b><span>SCROLL<br />PLAYHEAD</span></div>
         <div className="project-main"><header className="project-head reveal"><div><h3>{p.title}</h3><p>{p.org}</p></div>{project.metric && <strong>{project.metric}</strong>}</header>
-          <div className="project-layout"><div className="project-media media-mask"><video src={project.video} controls playsInline preload="metadata" aria-label={`${t.play}: ${p.title}`} /></div>
-            <div className="project-copy reveal"><p>{p.body}</p><ul>{project.tags.map(tag => <li key={tag}>{tag}</li>)}</ul>{index === 1 && <a href="https://youku-aigc.github.io/PerformRecast/" target="_blank" rel="noreferrer">{t.viewProject}<ArrowIcon /></a>}</div></div>
+          <div className={`project-layout${project.videos ? ' project-layout-stream' : ''}`}>
+            {project.videos
+              ? <StreamDemoReel videos={project.videos} lang={lang} playLabel={t.play} labels={t} />
+              : <div className="project-media media-mask"><video src={project.video} controls playsInline preload="metadata" aria-label={`${t.play}: ${p.title}`} /></div>}
+            <div className="project-copy reveal"><p>{p.body}</p><ul>{project.tags.map(tag => <li key={tag}>{tag}</li>)}</ul>{project.link && <a href={project.link} target="_blank" rel="noreferrer">{t.viewProject}<ArrowIcon /></a>}</div>
+          </div>
           {project.images && <div className={`project-figures figures-${project.images.length}`}>{project.images.map((src, i) => <figure className="media-mask" key={src}><img src={src} alt={`${p.title} ${i + 1}`} loading="lazy" /></figure>)}</div>}
           <div className="project-progress" aria-hidden="true"><i /></div>
         </div>
@@ -134,7 +171,7 @@ function App() {
       <article className="reveal"><span>2020—2024</span><h3>{lang === 'zh' ? '东南大学' : 'Southeast University'}</h3><p>{lang === 'zh' ? '自动化学院 · 本科' : 'B.Eng., School of Automation'}</p></article>
     </div></section>
 
-    <footer id="contact"><div><span>CONTACT</span><h2>{t.contact}</h2></div><a href="mailto:1215497652@qq.com">longxiao202110@gmail.com <ArrowIcon /></a><a href="https://github.com/longxiao2001" target="_blank" rel="noreferrer">GitHub <ArrowIcon /></a><p>© 2026 Long Xiao · Built frame by frame.</p></footer>
+    <footer id="contact"><div><span>CONTACT</span><h2>{t.contact}</h2></div><a href="mailto:1215497652@qq.com">longxiao202110@gmail.com <ArrowIcon /></a><a href="https://github.com/longxiao2001" target="_blank" rel="noreferrer">GitHub <ArrowIcon /></a><a href="https://www.zhihu.com/people/nong-xiao-suan-24/posts" target="_blank" rel="noreferrer">{lang === 'zh' ? '知乎' : 'Zhihu'} <ArrowIcon /></a><p>© 2026 Long Xiao · Built frame by frame.</p></footer>
   </main>;
 }
 
