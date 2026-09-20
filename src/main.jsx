@@ -11,22 +11,22 @@ gsap.registerPlugin(ScrollTrigger);
 const copy = {
   zh: {
     nav: ['简介', '项目', '论文', '能力', '联系'], heroTitle: '实时生成，虚拟交互。',
-    heroBody: '流式音视频联合生成 · 视频生成 · 视频生成 Agent', role: 'AIGC视频生成算法研究员',
+    heroBody: '视频生成算法 · 流式音视频生成', role: '视频生成算法研究员',
     school: '北京航空航天大学 · 硕士研究生', location: '北京，中国', explore: '查看研究项目', resume: '查看简历',
     aboutLabel: '关于我', aboutTitle: '我在做一件具体的事：让生成模型更快、更长，也更可交互。',
-    aboutBody: '我从语音驱动的 3D 数字人出发，沿着 2D 视频生成、时空局部编辑与实时流式音视频生成持续深入。工作覆盖数据构建、模型训练、推理优化与系统集成，也包含把生成链路收成可运行的视频 Agent。',
-    facts: [['研究方向', '流式音视频生成、时空局部编辑、视频生成 Agent'], ['实践路径', '腾讯、阿里巴巴与创业团队的模型研发经历'], ['工程取向', '从训练实验到部署性能，关注完整闭环']],
+    aboutBody: '我从语音驱动的数字人出发，沿着可控视频生成、局部编辑与实时流式音视频持续深入。工作覆盖数据构建、模型训练、推理优化与系统集成，也包含把生成链路收成可运行的视频 Agent。',
+    facts: [['研究方向', '流式音视频生成、视频局部编辑、视频生成 Agent'], ['实践路径', '腾讯、阿里巴巴与创业团队的模型研发经历'], ['工程取向', '从训练实验到部署性能，关注完整闭环']],
     beyond: '研究之外，我画画、打 Beatbox 和架子鼓，也保持健身。美术和音乐训练提升我在生成模型研究中的品味。',
     research: '研究与项目', publications: '论文成果', skills: '技术能力', education: '教育背景', contact: '保持联系', viewProject: '查看项目页', play: '播放项目视频',
     presetPrompt: '预设 Prompt', customPrompt: '在线切换 Prompt',
   },
   en: {
     nav: ['About', 'Work', 'Papers', 'Skills', 'Contact'], heroTitle: 'Real-time generation, interactive experiences.',
-    heroBody: 'Streaming audio-video generation · video generation · video agents', role: 'AIGC & Video Generation Researcher',
+    heroBody: 'Video generation · streaming audio-video', role: 'Video Generation Researcher',
     school: 'M.S. student · Beihang University', location: 'Beijing, China', explore: 'Explore selected work', resume: 'View résumé',
     aboutLabel: 'About me', aboutTitle: 'I build generative video systems that are faster, longer, and responsive.',
-    aboutBody: 'My path started with speech-driven 3D digital humans and moved through controllable 2D generation, spatiotemporal editing, and real-time streaming audio-video. I work across data, training, inference, and system integration, including turning generation pipelines into runnable video agents.',
-    facts: [['Research', 'Streaming audio-video, spatiotemporal editing, video agents'], ['Experience', 'Model R&D across Tencent, Alibaba, and a startup team'], ['Engineering', 'End-to-end work from training experiments to deployment']],
+    aboutBody: 'My path started with speech-driven digital humans and moved through controllable video generation, local editing, and real-time streaming audio-video. I work across data, training, inference, and system integration, including turning generation pipelines into runnable video agents.',
+    facts: [['Research', 'Streaming audio-video, local video editing, video agents'], ['Experience', 'Model R&D across Tencent, Alibaba, and a startup team'], ['Engineering', 'End-to-end work from training experiments to deployment']],
     beyond: 'Beyond research, I draw, beatbox, play drums, and train. Art and music training enhance my taste in generative model research.',
     research: 'Research & selected work', publications: 'Publications', skills: 'Technical practice', education: 'Education', contact: 'Let’s connect', viewProject: 'Project page', play: 'Play project video',
     presetPrompt: 'Preset prompts', customPrompt: 'Live prompt switching',
@@ -43,37 +43,37 @@ const streamDemos = [
 
 const projects = [
   {
-    zh: {title: '实时流式可交互音视频生成', org: '腾讯 · 2026.06–2026.09', body: '把双向 LTX-2.3 改造为块因果模型：按 1 秒对齐音视频联合块，并对全部 6 路注意力加因果掩码。Teacher Forcing 之后用 Resample Forcing 缓解误差累积；长序列 KV 分为 anchor、内容 memory 与 FIFO。分层 Prompt 支持流式过程中在线切换；去噪级多卡流水配合少步蒸馏，512×768 下达到 43 fps（仅 DiT 稳态去噪吞吐，不含文本编码、VAE / 音频解码与封装）、十分钟级连续生成无误差累积。'},
-    en: {title: 'Streaming Interactive Audio-Video Generation', org: 'Tencent · Jun–Sep 2026', body: 'Turned bidirectional LTX-2.3 into a block-causal model with 1-second AV chunks and causal masks on all six attention paths. Teacher then Resample Forcing reduces exposure bias; a three-tier KV cache holds long context. Hierarchical prompts enable live switching during generation; denoising-level multi-GPU pipelining with few-step distillation reaches 43 fps at 512×768 (steady-state DiT throughput, excluding text encoding, VAE and audio decoding and muxing) for ten-minute streams with no visible drift.'},
-    metric: '43 FPS (DiT only) · 512×768 · 10-min continuous', videos: streamDemos, images: ['./media/streaming-training.png', './media/streaming-parallelism.png'], tags: ['LTX-2.3', 'Block-Causal', 'Resample Forcing', 'Live Prompt'], link: 'https://longxiao2001.github.io/StreamLTX/',
+    zh: {title: '流式可交互音视频生成', org: '腾讯 PCG · QQ 影像研究中心 · 2026.06–2026.09', body: '把双向 LTX-2.3 改为块因果音视频生成模型：按 1 秒对齐不同帧率的音视频 latent，并为模态内与跨模态注意力加因果掩码。Teacher / Diffusion / Resample Forcing 分阶段训练，用模型 rollout 历史作监督，再把采样从 30 步蒸馏到 4 步；分层 KV 支持十分钟级连续生成，Global / Local Prompt 可在生成过程中更新指令。去噪级多卡流水在 512×768 下达到 43 fps 的 DiT 稳态吞吐；端到端实时生成，首帧约 2 秒预热。'},
+    en: {title: 'Streaming Interactive Audio-Video Generation', org: 'Tencent PCG · QQ Imaging · Jun–Sep 2026', body: 'Turned bidirectional LTX-2.3 into a block-causal audio-video model: 1-second chunks align latents of different frame rates, with causal masks on intra- and cross-modal attention. Teacher, Diffusion, and Resample Forcing train on model-rollout history, then distill 30 steps to 4. A hierarchical KV cache supports ten-minute streams, and Global / Local prompts can be updated while generating. Denoising-stage multi-GPU pipelining reaches 43 fps DiT throughput at 512×768; end-to-end realtime generation warms up in about 2 seconds.'},
+    metric: '43 FPS DiT · 4-step · 10-min', videos: streamDemos, images: ['./media/streaming-training.png', './media/streaming-parallelism.png'], tags: ['LTX-2.3', 'Block-Causal', 'Resample Forcing', 'Live Prompt'], link: 'https://longxiao2001.github.io/StreamLTX/',
   },
   {
-    zh: {title: '视频时空局部重绘', org: '阿里巴巴 · 2025.10–2026.04', body: '基于 Wan2.2 做时空局部重绘，用逐帧向量化 timestep 代替额外掩码分支：flow matching 中的 σ 作为逐位置混合权重，保留、重绘或做部分编辑，不改模型结构。结构化重绘课程配合边界平滑，并按高低噪专家分别训练 LoRA，可指定任意时间段重绘而其余片段不变。'},
-    en: {title: 'Spatiotemporal Video Repainting', org: 'Alibaba · Oct 2025–Apr 2026', body: 'Repainted Wan2.2 video with per-frame vectorized timesteps instead of a mask branch: σ in flow matching is a per-location mix weight for keep, edit, or full redraw, with no extra parameters. A structured curriculum and split LoRAs for high/low-noise experts let any time span be edited while the rest stays fixed.'},
-    video: './media/repaint-demo.mp4', images: ['./media/repaint-framework.png'], tags: ['Wan2.2', 'Vectorized Timestep', 'LoRA', 'Video Editing'], link: 'https://youku-aigc.github.io/PerformRecast/',
+    zh: {title: '视频局部重绘与表情编辑', org: '阿里巴巴 · 优酷 · 2025.10–2026.04', body: '基于 Wan2.2，用逐帧向量化 timestep 控制噪声强度，指定时间段重绘而无需额外掩码分支；条件帧按编辑强度加噪，再沿缩放后的噪声轨迹去噪。编辑边界用时间步线性过渡，按进度调配同步、随机异步与连续段重绘，并为高低噪专家分别训练 LoRA。同步搭建 UE Metahuman 表情管线与评测集，用于 PerformRecast（CVPR 2026）。'},
+    en: {title: 'Local Video Repainting & Expression Editing', org: 'Alibaba Youku · Oct 2025–Apr 2026', body: 'On Wan2.2, per-frame vectorized timesteps control noise so a chosen time span can be repainted without a mask branch; conditioned frames are noised by edit strength and denoised along a scaled trajectory. A linear timestep ramp smooths edit boundaries, a staged curriculum mixes sync, async, and segment edits, and split LoRAs match high/low-noise experts. Built a UE MetaHuman expression pipeline and eval set for PerformRecast (CVPR 2026).'},
+    video: './media/repaint-demo.mp4', images: ['./media/repaint-framework.png'], tags: ['Wan2.2', 'Vectorized Timestep', 'LoRA', 'PerformRecast'], link: 'https://youku-aigc.github.io/PerformRecast/',
   },
   {
-    zh: {title: '2D Talking Avatar 与论文讲解视频 Agent', org: '右脑科技 · 2025.06–2025.10', body: '融合 Pose / Text / Audio 条件生成 2D 数字人，分段生成并跨片段衔接扩展时长，再用 CausVid 蒸馏把采样压到少步。同时用 LangGraph 搭建论文讲解视频 Agent：PDF 解析、大纲与口播稿、幻灯片、TTS、数字人口播到成片，并用 TTS 字符级时间戳对齐分镜时长。'},
-    en: {title: '2D Talking Avatar & Paper-Talk Video Agent', org: 'RightBrain AI · Jun–Oct 2025', body: 'Fused pose, text, and audio for controllable 2D avatars, extending duration with segmented generation and CausVid few-step distillation. Built a LangGraph paper-talk video agent from PDF parsing through slides, TTS, avatar delivery, and muxing, using character-level TTS timestamps as the shot clock.'},
+    zh: {title: '数字人生成与论文讲解视频 Agent', org: '右脑科技 · 2025.06–2025.10', body: '基于 VACE 与 LivePortrait 融合姿态、文本与音频，分段生成并跨片段衔接扩展时长，配合 CausVid 蒸馏与权重动态加载完成 14B 推理。用 LangGraph 搭建从论文解析、脚本到成片的视频 Agent，以 TTS 字符级时间戳对齐分镜、幻灯片与口播，并支持并行生成、失败重试与工具降级。'},
+    en: {title: 'Digital Human & Paper-Talk Video Agent', org: 'RightBrain AI · Jun–Oct 2025', body: 'Fused pose, text, and audio with VACE and LivePortrait, extending duration through segmented generation, then ran the 14B model with CausVid distillation and dynamic weight loading. Built a LangGraph agent from paper parsing and scripting to the final video, using character-level TTS timestamps to align shots, slides, and speech, with parallel generation, retries, and tool fallbacks.'},
     video: './media/talking-avatar2.mp4', tags: ['VACE', 'LivePortrait', 'LangGraph', 'Video Agent'],
   },
   {
-    zh: {title: 'LLM 驱动的交互游戏 NPC', org: '腾讯 · 2025.02–2025.06', body: '设计并集成 ASR–LLM–TTS–UE 端到端交互链路，完成模块封装、接口编排与推理流程联调，并在各环节间分配时延预算，满足实时交互。'},
-    en: {title: 'LLM-driven Interactive Game NPC', org: 'Tencent · Feb–Jun 2025', body: 'Designed an ASR–LLM–TTS–Unreal end-to-end loop, packaged the modules, orchestrated inference, and allocated latency budgets across stages for real-time interaction.'},
-    video: './media/npc-demo.mp4', images: ['./media/npc-framework.png'], tags: ['ASR', 'LLM', 'TTS', 'Unreal Engine'],
+    zh: {title: '交互游戏 NPC 与语音驱动表情生成', org: '腾讯 IEG · 光子 · 2025.02–2025.06', body: '集成 ASR–LLM–TTS–UE 交互链路，完成模块接口与推理联调，并按环节分配时延预算。同时基于前期语音驱动表情工作继续开发：以 WavLM-Large、情绪与历史表情为条件，在 185 维 Metahuman 控制参数上做扩散生成，用速度损失约束抖动，滑窗重叠衔接长音频。'},
+    en: {title: 'Interactive Game NPC & Speech-driven Expression', org: 'Tencent IEG · Lightspeed · Feb–Jun 2025', body: 'Integrated an ASR–LLM–TTS–Unreal loop, wired the module APIs, and allocated latency budgets across stages. Continued earlier speech-driven expression work: WavLM-Large, emotion, and history expressions condition an MDM Transformer on 185-dim MetaHuman controls, with a velocity loss to suppress jitter and overlapping windows for long audio.'},
+    video: './media/npc-demo.mp4', images: ['./media/npc-framework.png'], tags: ['ASR', 'LLM', 'TTS', 'MetaHuman'],
   },
   {
-    zh: {title: '语音驱动的情感化 3D 数字人表情生成', org: '本科毕业设计 · 2024.01–2024.06', body: '冻结 WavLM-Large 编码语音，与情绪嵌入和种子表情共同作为条件，在 185 维 Metahuman control rig 上做扩散生成，并加入速度损失抑制抖动。长音频按窗口滚动生成，重叠区线性混合，导出 JSON 驱动 Metahuman 渲染。'},
-    en: {title: 'Speech-driven Emotional 3D Expression Generation', org: 'Undergraduate thesis · Jan–Jun 2024', body: 'Froze WavLM-Large for speech, conditioned a diffusion backbone on emotion embeddings and seed expressions, and generated 185-dim MetaHuman control-rig motion with a velocity loss to suppress jitter. Long audio is rolled in overlapping windows and exported as JSON for rendering.'},
-    video: './media/digital-human.mp4', images: ['./media/digital-human-framework.png'], tags: ['WavLM', 'Diffusion', 'MetaHuman', 'Facial Animation'],
+    zh: {title: '语音驱动的情感化 3D 数字人表情生成', org: '本科毕业设计 · 2024.01–2024.06', body: '冻结 WavLM-Large 编码语音，与情绪和历史表情共同作为条件，用 MDM Transformer 在 185 维 Metahuman 控制参数上做扩散生成，并加入速度损失抑制抖动。长音频按滑窗滚动生成，重叠区线性混合，导出 JSON 驱动 Metahuman 渲染。'},
+    en: {title: 'Speech-driven Emotional 3D Expression Generation', org: 'Undergraduate thesis · Jan–Jun 2024', body: 'Froze WavLM-Large for speech and conditioned an MDM Transformer on emotion and history expressions to generate 185-dim MetaHuman controls, with a velocity loss to suppress jitter. Long audio is rolled in overlapping windows and exported as JSON for rendering.'},
+    video: './media/digital-human.mp4', images: ['./media/digital-human-framework.png'], tags: ['WavLM', 'MDM', 'MetaHuman', 'Facial Animation'],
   },
 ];
 
 const skillGroups = [
-  ['Causal generation', 'Block-Causal Attention · Teacher / Resample Forcing · KV Cache'],
-  ['Models', 'LTX-2.3 · Wan2.2 · CogVideoX · MiniMax-H3 · VACE'],
-  ['Training & inference', 'Few-step distillation · Timestep parallelism · LoRA · LangGraph'],
-  ['Interactive media', 'Streaming AV · UE MetaHuman · Video Agent'],
+  ['Generative modeling', 'Diffusion / Flow Matching · DiT · Block-causal & cross-modal attention · Joint AV'],
+  ['Training & editing', 'Teacher / Diffusion / Resample Forcing · DMD few-step · LoRA'],
+  ['Streaming inference', 'Hierarchical KV Cache · Timestep parallelism · FlashAttention-3'],
+  ['Interactive systems', 'LangGraph · UE MetaHuman · Video Agent'],
 ];
 
 function ArrowIcon() { return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" /></svg>; }

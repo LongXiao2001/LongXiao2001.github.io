@@ -1,8 +1,8 @@
 % !TEX program = tectonic
 % Long Xiao - AIGC / Streaming Audio-Video Generation / Video Agent Resume
-\documentclass[10pt,a4paper]{ctexart}
+\documentclass[10pt,a4paper,fontset=none]{ctexart}
 
-\usepackage[left=1.28cm,right=1.28cm,top=0.84cm,bottom=0.32cm]{geometry}
+\usepackage[left=1.28cm,right=1.28cm,top=0.95cm,bottom=0.85cm]{geometry}
 \usepackage{xcolor}
 \usepackage{graphicx}
 \usepackage{tabularx}
@@ -25,11 +25,11 @@
 
 \IfFontExistsTF{Times New Roman}{\setmainfont{Times New Roman}}{}
 \IfFontExistsTF{Arial}{\setsansfont{Arial}}{}
-\IfFontExistsTF{Songti SC}{\setCJKmainfont{Songti SC}}{\setCJKmainfont{FandolSong-Regular}}
+\IfFontExistsTF{Songti SC}{\setCJKmainfont{Songti SC}}{\setCJKmainfont{FandolSong-Regular.otf}}
 \IfFontExistsTF{PingFang SC}{%
   \setCJKsansfont{PingFang SC}%
 }{%
-  \setCJKsansfont{FandolHei-Regular}%
+  \IfFontExistsTF{Heiti SC}{\setCJKsansfont{Heiti SC}[AutoFakeBold=2]}{\setCJKsansfont{FandolHei-Regular.otf}}%
 }
 
 \hypersetup{colorlinks=true,urlcolor=linkblue,linkcolor=linkblue}
@@ -45,7 +45,7 @@
   {\color{teal}\rule{2.2pt}{1.10em}}\hspace{0.48em}%
   {\sffamily\color{navy}\fontsize{12.7}{14}\selectfont\bfseries #1}%
   \hspace{0.62em}{\sffamily\color{muted}\fontsize{7.1}{8}\selectfont\MakeUppercase{#2}}\par
-  \vspace{0.10em}{\color{rulegray}\rule{\linewidth}{0.55pt}}\vspace{0.10em}
+  \nobreak\vspace{0.22em}{\color{rulegray}\hrule height 0.55pt}\nobreak\vspace{0.38em}
 }
 
 \newcommand{\entryhead}[3]{%
@@ -54,28 +54,30 @@
   \end{tabularx}\vspace{0.03em}
 }
 
+\newcommand{\itemtag}[1]{{\sffamily\bfseries\color{navy}#1}\hspace{0.34em}{\color{teal}\textbar}\hspace{0.34em}}
+
 \newenvironment{tightitems}{%
-  \begin{itemize}[leftmargin=1.20em,itemsep=0.02em,topsep=0.02em,parsep=0pt,partopsep=0pt,label=\textcolor{teal}{\raisebox{0.15ex}{\scriptsize\textbullet}}]
+  \begin{itemize}[leftmargin=1.20em,itemsep=0.20em,topsep=0.10em,parsep=0pt,partopsep=0pt,label=\textcolor{teal}{\raisebox{0.15ex}{\scriptsize\textbullet}}]
 }{\end{itemize}\vspace{0.02em}}
 
 \newcommand{\skillline}[2]{%
-  \par\noindent\hangindent=1.72cm\hangafter=1%
-  \makebox[1.62cm][l]{\sffamily\bfseries\color{navy}#1}#2\par\vspace{0.06em}%
+  \par\noindent\hangindent=2.12cm\hangafter=1%
+  \makebox[2.12cm][l]{\sffamily\bfseries\color{navy}#1}#2\par\vspace{0.06em}%
 }
 
 \begin{document}
 \color{ink}
-\fontsize{10.3}{11.5}\selectfont
+\fontsize{10.7}{13.4}\selectfont
 
 
 % Header
 \begin{minipage}[t]{0.82\linewidth}
   \vspace{0pt}
-  {\sffamily\fontsize{22}{24}\selectfont\bfseries\color{navy} 龙潇}%
+  {\sffamily\fontsize{24}{26}\selectfont\bfseries\color{navy} 龙潇}%
   \hspace{0.55em}{\sffamily\fontsize{9}{10}\selectfont\color{muted}LONG XIAO}%
-  \hspace{1.15em}\raisebox{-0.20cm}{\href{https://longxiao2001.github.io}{\includegraphics[width=1cm,height=1cm]{long_xiao_homepage_qr.png}}}\par
+  \hspace{1.15em}\raisebox{-0.20cm}{\href{https://longxiao2001.github.io}{\includegraphics[width=1.12cm,height=1.12cm]{long_xiao_homepage_qr.png}}}\par
   \vspace{0.22em}
-  {\sffamily\fontsize{12.4}{14}\selectfont\bfseries\color{navy}流式音视频联合生成 · 视频生成 · 视频生成 Agent}\par
+  {\sffamily\fontsize{12.4}{14}\selectfont\bfseries\color{navy}视频生成算法 · 流式音视频生成}\par
   \vspace{0.36em}
   {\sffamily\color{muted}\fontsize{9.15}{10.9}\selectfont
   17383126759\quad\textbar\quad \href{mailto:1215497652@qq.com}{1215497652@qq.com}\quad\textbar\quad
@@ -83,53 +85,46 @@
 \end{minipage}\hfill
 \begin{minipage}[t]{0.125\linewidth}
   \vspace{0pt}\raggedleft
-  \fcolorbox{teal}{white}{\includegraphics[width=1.52cm,height=1.84cm,keepaspectratio]{long_xiao_photo.jpg}}
+  \fcolorbox{teal}{white}{\includegraphics[width=1.72cm,height=2.10cm,keepaspectratio]{long_xiao_photo.jpg}}
 \end{minipage}
 
 
-\vspace{-0.20em}
+\vspace{0.30em}
 \sectiontitle{教育背景}{Education}
 
-\begin{tabularx}{\linewidth}{@{}X >{\raggedleft\arraybackslash}p{3.2cm}@{}}
-  {\sffamily\textbf{北京航空航天大学}}｜自动化科学与电气工程学院｜硕士｜{\sffamily\color{muted}专业排名 \textbf{\color{teal}前 10\%}} & {\sffamily\color{muted} 2024.09--至今}\\[0.09em]
-  {\sffamily\textbf{东南大学}}｜自动化学院｜本科｜{\sffamily\color{muted}专业排名 \textbf{\color{teal}前 30\%}} & {\sffamily\color{muted} 2020.09--2024.06}
-\end{tabularx}
+{\fontsize{10.7}{13.0}\selectfont\parfillskip=0pt\relax
+{\sffamily\textbf{北京航空航天大学}}｜自动化科学与电气工程学院｜硕士｜{\sffamily\color{muted}专业排名 \textbf{\color{teal}前 10\%}}\hfill{\sffamily\color{muted}2024.09--至今}\par
+{\sffamily\textbf{东南大学}}｜自动化学院｜本科｜{\sffamily\color{muted}专业排名 \textbf{\color{teal}前 30\%}}\hfill{\sffamily\color{muted}2020.09--2024.06}\par}
 \vspace{0.02em}
 
 \sectiontitle{实习与研究经历}{Research Experience}
-\entryhead{腾讯}{实时流式可交互音视频生成（LTX-2.3 22B）}{2026.06--2026.09}
+\entryhead{腾讯 PCG · QQ 影像研究中心}{流式可交互音视频生成（LTX-2.3 22B）}{2026.06--2026.09}
 \begin{tightitems}
-  \item \textbf{基于LTX-2.3做实时交互式音视频生成}。把双向 LTX-2.3 改造为\textbf{块因果}模型。视频与音频的 latent 帧率不同（3 fps 与 25 fps），按 1 秒对齐设计 \textbf{AV 联合块}（视频 4+3k 帧、音频 26+25k 帧），并对\textbf{全部 6 路注意力}加因果掩码。\href{https://longxiao2001.github.io/StreamLTX/}{[Project Page]}
-  \item 两阶段训练。\textbf{Teacher Forcing} 阶段使用真实长视频数据训练将双向扩散模型因果化；\textbf{Resample Forcing} 阶段用无梯度自回归 rollout 生成历史并在其上监督，缓解训练用真值加噪、推理用模型输出造成的误差累积。两阶段均用 concat 布局，两段共用一套 RoPE 索引并配稀疏因果掩码，单次前向得到 N 个块的监督。
-  \item 长序列 KV 分 anchor、内容 memory、FIFO recent 三层。逐层按 QK 注意力质量与时间多样性打分做 Top-M 淘汰。
-  \item 支持\textbf{流式生成过程中切换prompt}：设计\textbf{分层 Prompt 条件机制}，将整段文本条件解耦为描述场景、角色与风格的Global Prompt，以及承载阶段性台词与动作指令的Local Prompt。当前块只对当前片段prompt做交叉注意力计算。
-  \item 推理\textbf{按去噪级切分多卡}，每卡常驻一级 KV，块间 NCCL P2P 传递latent 形成跨块流水；配合少步蒸馏，FA3，\textbf{4×H800、512×768} 下达到 \textbf{43 fps}（仅 DiT 稳态去噪吞吐），支持\textbf{分钟级}连续生成。
+  \item \itemtag{因果建模}将双向 LTX-2.3 改为\textbf{块因果音视频生成模型}，按 1 秒对齐不同帧率的音视频 latent，为模态内及跨模态注意力设计因果掩码，支持按块联合生成。\href{https://longxiao2001.github.io/StreamLTX/}{[Project Page]}
+  \item \itemtag{训练与蒸馏}采用 Teacher / Diffusion / Resample Forcing 分阶段训练：引入块级独立噪声，以\textbf{模型 rollout 历史作为监督条件}，针对训练与推理的历史分布偏差训练。各阶段共用 RoPE 索引与稀疏因果掩码，单次前向监督多个块；将采样由 30 步蒸馏至\textbf{4 步}。
+  \item \itemtag{长程记忆}将 KV 缓存分为锚点、历史记忆和近期窗口，结合注意力得分与时间多样性筛选历史，固定缓存预算，支持\textbf{十分钟级连续生成}。
+  \item \itemtag{在线交互}拆分承载场景、角色与风格的 Global Prompt，以及承载动作与台词的 Local Prompt；限制当前块只关注对应的局部文本条件，支持\textbf{生成过程中更新指令}。
+  \item \itemtag{并行推理}按去噪阶段组织多卡流水，每卡保留对应阶段的 KV，通过 NCCL P2P 传递 latent；结合 FA3，在\textbf{4×H800、512×768} 下达到\textbf{43 fps} 的 DiT 稳态去噪吞吐。
+  \item \itemtag{实时生成}实现\textbf{端到端实时音视频生成}；首帧需完成四步流水预热（约\textbf{2 s}），VAE 解码与Prompt编码异步进行。同配置基线采用 30 步非时间步并行推理，单步约 0.4 s。
 \end{tightitems}
 
-\entryhead{阿里巴巴}{AIGC 视频生成算法｜时空局部重绘与表情编辑}{2025.10--2026.04}
+\entryhead{阿里巴巴 · 优酷}{视频局部重绘与表情编辑}{2025.10--2026.04}
 \begin{tightitems}
-  \item 基于 Wan2.2 做视频时空局部重绘，用\textbf{逐帧向量化 timestep 代替额外的掩码分支}：flow matching 中 σ 是逐位置的混合权重，取 0 保留原内容、取 1 完全重绘、取中间值做部分编辑，不改模型结构、不增加参数。
-  \item 训练用\textbf{结构化重绘课程}（同步 / 随机异步 / 连续段重绘 / 边界平滑），比例随进度调整。硬阶跃的 timestep 会让 \textbf{adaLN 调制}在相邻帧突变、在编辑边界留下接缝，改用宽度 2 帧的线性过渡。LoRA rank 512，81 帧 480×832。
-  \item Wan2.2 高/低噪专家以 σ=0.875 为界路由，与逐帧 timestep 冲突；按专家分别训练 LoRA，推理端按步路由、对条件帧按编辑强度一次性加噪，并沿缩放后的噪声轨迹去噪，可\textbf{指定任意时间段重绘而其余片段不变}。
-  \item 搭建 UE Metahuman 表情参数提取与 3D 动画渲染管线，构建 2D 表情迁移 benchmark 与数据筛选流程。\href{https://youku-aigc.github.io/PerformRecast/}{[Project Page]}
+  \item \itemtag{可控重绘}基于 Wan2.2，以\textbf{逐帧向量化 timestep} 控制噪声强度，实现指定时间段重绘，无需新增掩码分支；对条件帧按编辑强度加噪，并沿缩放后的噪声轨迹去噪。
+  \item \itemtag{训练适配}针对编辑边界的 adaLN 调制突变，引入时间步线性过渡，按训练进度调配同步、随机异步和连续段重绘任务；为高、低噪专家分别训练 LoRA，适配逐帧编辑条件与推理时的专家路由。
+  \item \itemtag{数据与评测}搭建 UE Metahuman 表情参数提取与 3D 动画渲染管线，构建表情迁移评测集和数据筛选流程，用于\textbf{PerformRecast（CVPR 2026）}。\href{https://youku-aigc.github.io/PerformRecast/}{[Project Page]}
 \end{tightitems}
 
-\entryhead{右脑科技}{2D Talking Avatar 与论文讲解视频 Agent}{2025.06--2025.10}
+\entryhead{右脑科技}{数字人生成与论文讲解视频 Agent}{2025.06--2025.10}
 \begin{tightitems}
-  \item 基于 VACE、LivePortrait 融合 Pose / Text / Audio 条件生成 2D 数字人，用分段生成与跨片段衔接扩展时长；用 CausVid 蒸馏把采样步数压到少步，配合显存动态加载，在\textbf{单张 RTX 4090} 上跑通VACE14B。
-  \item 用 LangGraph 搭建\textbf{论文讲解视频 Agent}，链路为 MinerU MCP 解析 PDF、LLM 生成大纲与口播稿、渲染 HTML 幻灯片、TTS 配音、数字人口播、合成成片。用 \textbf{TTS 返回的字符级时间戳}确定每个分镜的时长，视觉素材按该时长生成，合成端只做小幅裁剪变速。
-  \item 用 Send() 把分镜扇出为并行子图、以 operator.add 归并；每个子图带重试（报错信息回填进prompt）与确定性兜底工具，单个工具偶发失败时整条链路仍能输出。
+  \item \itemtag{数字人生成}基于 VACE、LivePortrait 融合姿态、文本与音频条件，通过分段生成和跨片段衔接扩展时长；采用 CausVid 蒸馏与权重动态加载，在\textbf{单张 RTX 4090} 上运行 VACE 14B。
+  \item \itemtag{视频 Agent}使用 LangGraph 构建论文解析、脚本生成到视频合成的流程，以\textbf{TTS 字符级时间戳}确定分镜时长，对齐幻灯片、口播与数字人画面；支持分镜并行生成、失败重试与工具降级。
 \end{tightitems}
 
-\entryhead{腾讯}{LLM 驱动的交互游戏 NPC}{2025.02--2025.06}
+\entryhead{腾讯 IEG · 光子}{交互游戏 NPC 与语音驱动表情生成}{2025.02--2025.06}
 \begin{tightitems}
-  \item 设计并集成 \textbf{ASR-LLM-TTS-UE} 端到端交互链路，完成模块封装、接口编排与推理流程联调，并在各环节间分配时延预算满足实时交互。
-\end{tightitems}
-
-\entryhead{本科毕业设计}{语音驱动的情感化 3D 数字人表情生成}{2024.01--2024.06}
-\begin{tightitems}
-  \item 冻结 \textbf{WavLM-Large} 编码语音，与 5 类情绪嵌入、前 8 帧种子表情共同作为条件，用 Transformer 去噪主干（MDM 结构）在 \textbf{185 维 Metahuman control rig} 上做扩散生成；预测 x0 并加入\textbf{速度损失}，抑制渲染后肉眼可见的抖动。
-  \item 长音频按窗口滚动生成，上一段末尾 8 帧作下一段种子、重叠区线性混合，支持任意时长；导出 JSON 驱动 Metahuman 渲染成片。
+  \item \itemtag{语音交互}集成\textbf{ASR-LLM-TTS-UE} 交互链路，完成模块接口与推理联调，并按环节分配时延预算。
+  \item \itemtag{表情生成}基于前期语音驱动表情工作继续开发：以冻结的 WavLM-Large 语音特征、情绪和历史表情为条件，用 MDM Transformer 在\textbf{185 维 Metahuman 控制参数}上进行扩散生成；引入速度损失约束抖动，通过滑窗与重叠混合衔接长音频。
 \end{tightitems}
 
 \sectiontitle{论文成果}{Publications}
@@ -138,13 +133,9 @@
   \item Z. Chen, \textbf{X. Long}, L. Zhang and W. Cai. ``Toward Diffusion-Based Deep Reinforcement Learning for Discrete Decision-Making: Methods and Evaluations.'' \textit{IEEE Transactions on Network Science and Engineering}.
 \end{enumerate}
 
-\sectiontitle{技术能力与综合亮点}{Skills \& Activities}
-\skillline{技术方法}{Block-Causal Attention、Teacher / Diffusion / Resample Forcing、KV Cache 管理、少步蒸馏、时间步并行推理}
-\skillline{模型框架}{LTX-2.3, Wan2.2, CogVideoX, MiniMax-H3, VACE, UE Metahuman, LangGraph}
-\skillline{工程能力}{数据构建与筛选、训练实验设计、显存与推理优化、效果评估、系统集成服务部署}
-% \skillline{音视频}{AV 联合块对齐、跨模态因果注意力（A2V / V2A）、latent 帧率对齐与 RoPE 设计、流式音频拼接}
-% \skillline{生成模型}{Flow Matching / Diffusion、向量化时间步与局部重绘、LoRA、MoE 专家路由、adaLN 条件注入}
-% \skillline{工程能力}{LangGraph 并行扇出与降级、MCP、FSDP / DeepSpeed、显存切片与权重动态加载、数据构建}
-% \skillline{综合素质}{BEATBOX 协会会长；重庆市美术类联考 546 / 11900、北京电影学院第 32 名}
+\sectiontitle{技术能力}{Technical Skills}
+\skillline{生成建模}{Diffusion / Flow Matching、DiT、块因果与跨模态注意力、音视频联合生成、常见开源视频模型}
+\skillline{训练与编辑}{Teacher / Diffusion / Resample / Self Forcing、DMD 少步蒸馏、LoRA微调、分布式训练}
+\skillline{流式推理}{分层 KV Cache、时间步并行、FlashAttention-3、动态权重加载}
 
 \end{document}
