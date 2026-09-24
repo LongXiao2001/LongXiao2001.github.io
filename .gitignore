@@ -8,3 +8,6 @@ attachments/
 reference/*.md
 reference/*.bak
 reference/*.bak-*
+output/
+reference/*.png
+reference/*.jpg

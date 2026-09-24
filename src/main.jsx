@@ -76,7 +76,17 @@ const skillGroups = [
   ['Interactive systems', 'LangGraph · UE MetaHuman · Video Agent'],
 ];
 
+const contactLinks = [
+  {id: 'email', href: 'mailto:1215497652@qq.com', zh: 'Email', en: 'Email', footer: 'longxiao202110@gmail.com'},
+  {id: 'github', href: 'https://github.com/longxiao2001', zh: 'GitHub', en: 'GitHub', external: true},
+  {id: 'zhihu', href: 'https://www.zhihu.com/people/nong-xiao-suan-24/posts', zh: '知乎', en: 'Zhihu', external: true},
+];
+
 function ArrowIcon() { return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" /></svg>; }
+
+function ContactLink({item, lang, children}) {
+  return <a href={item.href} {...(item.external ? {target: '_blank', rel: 'noreferrer'} : {})}>{children ?? item[lang]}</a>;
+}
 
 function StreamDemoReel({videos, lang, playLabel, labels}) {
   const [active, setActive] = useState(0);
@@ -130,6 +140,7 @@ function App() {
       <div className="hero-copy">
         <h1><span>龙潇</span><small>LONG XIAO</small></h1><h2>{t.heroTitle}</h2><p className="hero-field">{t.heroBody}</p>
         <div className="hero-actions"><a className="button primary" href="#work">{t.explore}<ArrowIcon /></a><a className="button" href="./reference/Long_Xiao_AIGC_Resume.pdf">{t.resume}</a></div>
+        <nav className="hero-links" aria-label={t.contact}>{contactLinks.map((item) => <ContactLink key={item.id} item={item} lang={lang} />)}</nav>
         <dl className="identity-list"><div><dt>01</dt><dd>{t.school}</dd></div><div><dt>02</dt><dd>{t.role}</dd></div><div><dt>03</dt><dd>{t.location}</dd></div></dl>
       </div>
       <div className="hero-player" aria-label="120-frame causal video generation visualization"><Player component={HeroSequence} durationInFrames={120} compositionWidth={1280} compositionHeight={720} fps={30} autoPlay loop initiallyMuted controls={false} acknowledgeRemotionLicense style={{width: '100%'}} /></div>
@@ -171,7 +182,7 @@ function App() {
       <article className="reveal"><span>2020—2024</span><h3>{lang === 'zh' ? '东南大学' : 'Southeast University'}</h3><p>{lang === 'zh' ? '自动化学院 · 本科' : 'B.Eng., School of Automation'}</p></article>
     </div></section>
 
-    <footer id="contact"><div><span>CONTACT</span><h2>{t.contact}</h2></div><a href="mailto:1215497652@qq.com">longxiao202110@gmail.com <ArrowIcon /></a><a href="https://github.com/longxiao2001" target="_blank" rel="noreferrer">GitHub <ArrowIcon /></a><a href="https://www.zhihu.com/people/nong-xiao-suan-24/posts" target="_blank" rel="noreferrer">{lang === 'zh' ? '知乎' : 'Zhihu'} <ArrowIcon /></a><p>© 2026 Long Xiao · Built frame by frame.</p></footer>
+    <footer id="contact"><div><span>CONTACT</span><h2>{t.contact}</h2></div>{contactLinks.map((item) => <ContactLink key={item.id} item={item} lang={lang}>{item.footer || item[lang]} <ArrowIcon /></ContactLink>)}<p>© 2026 Long Xiao · Built frame by frame.</p></footer>
   </main>;
 }
 

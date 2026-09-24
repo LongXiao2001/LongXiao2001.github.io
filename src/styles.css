@@ -45,6 +45,10 @@ img, video { display: block; width: 100%; }
 .hero h2 { max-width: 520px; margin: 0; color: var(--blue); font-size: clamp(25px, 2.7vw, 44px); line-height: 1.13; letter-spacing: -.045em; }
 .hero-field { margin: 18px 0 30px; color: var(--muted); font-size: clamp(14px, 1.2vw, 17px); line-height: 1.7; }
 .hero-actions { display: flex; align-items: center; gap: 10px; }
+.hero-links { display: flex; flex-wrap: wrap; align-items: center; margin: 16px 0 0; font: 500 11px/1 "IBM Plex Mono", monospace; }
+.hero-links a { color: var(--muted); padding: 6px 0; }
+.hero-links a + a { margin-left: 12px; padding-left: 12px; border-left: 1px solid var(--line); }
+.hero-links a:hover, .hero-links a:focus-visible { color: var(--blue); }
 .button { min-height: 45px; padding: 0 18px; display: inline-flex; align-items: center; justify-content: center; gap: 17px; border: 1px solid var(--ink); font-size: 13px; font-weight: 600; transition: color .25s, background .25s; }
 .button.primary { background: var(--blue); border-color: var(--blue); color: white; }
 .button:hover { background: var(--ink); color: white; }
